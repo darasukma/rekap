@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ebf5fd">
+<title>CAHAYA SDIDTK – Catatan Hasil Screening dan Edukasi Kesehatan Anak</title>
+<style>
+:root{
+  --bg:#fbfbfb; --frame:#ebf5fd; --card:#fff; --field:#f4f8fc; --group:#eff4fb;
+  --brand:#3a83b7; --btn:#488ec0; --ink:#000; --label:#4a6b85; --muted:#6a89a4;
+  --ph:#97a9bb; --line:#dce9f3; --chip-bg:#ddeffe; --chip:#1e8ef0; --qr:#28465e;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Roboto,"Noto Sans",Ubuntu,Cantarell,Arial,sans-serif;
+  font-size:16px;line-height:1.4;
+  padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) calc(96px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+}
+.frame{max-width:1152px;margin:0 auto;background:var(--frame);border-radius:32px;padding:18px}
+.card{background:var(--card);border-radius:24px;padding:18px 18px 22px;box-shadow:0 1px 3px rgba(58,131,183,.06)}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+header{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:2px solid var(--line)}
+.logo{width:63px;height:63px;flex:none}
+.logo img{width:100%;height:100%;display:block;object-fit:contain}
+h1{margin:0;font-size:1.6em;letter-spacing:.2px;color:var(--brand);font-weight:700;line-height:1.1}
+header p{margin:2px 0 0;color:var(--muted);font-size:1.05em}
+
+section{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0;padding-bottom:0}
+h2{margin:0 0 8px;font-size:1.3em;font-weight:600}
+.hint{margin:-2px 0 10px;color:var(--muted);font-size:1.05em}
+label{display:block;font-weight:600;color:var(--label);font-size:1.1em;margin:0 0 6px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+input,textarea{
+  width:100%;border:0;outline:0;background:var(--field);color:var(--ink);
+  font:inherit;font-size:1.1em;border-radius:14px;padding:0 18px;height:62px;
+  appearance:none;-webkit-appearance:none;transition:box-shadow .15s
+}
+textarea{height:auto;min-height:62px;padding:18px;resize:vertical}
+input::placeholder,textarea::placeholder{color:var(--ph)}
+input:focus,textarea:focus{box-shadow:0 0 0 3px rgba(72,142,192,.35)}
+input[type=number]{-moz-appearance:textfield}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=date]{min-height:62px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{background:var(--group);border-radius:20px;padding:12px}
+.cat h3{margin:2px 2px 12px;display:flex;align-items:center;gap:8px;font-size:1.02em;color:var(--label);font-weight:600}
+.cat h3 .i{color:#3b8fcb;font-size:1.15em}
+.cat input{background:#fff;height:54px;border-radius:12px;padding:0 12px}
+
+.qr{display:flex;gap:26px;align-items:center}
+.qr-img{width:132px;height:132px;flex:none;display:grid;place-items:center;overflow:hidden}
+.qr-img img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated;display:block}
+.qr h3{margin:0 0 4px;font-size:1.3em;font-weight:600}
+.qr p{margin:0 0 6px;color:var(--muted);font-size:1.05em}
+.chip{display:inline-block;background:var(--chip-bg);color:var(--chip);font-weight:700;font-size:.95em;padding:4px 12px;border-radius:999px}
+.qr-actions{display:none;flex-wrap:wrap;gap:8px;margin-top:10px}
+.qr-actions.show{display:flex}
+.qr-img img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+.mini{
+  display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--label);
+  font:inherit;font-size:.9em;font-weight:600;padding:7px 12px;border-radius:10px;cursor:pointer
+}
+.mini:hover{background:var(--field)}
+
+.actions{display:grid;gap:10px;margin-top:18px}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;border:0;cursor:pointer;
+  font:inherit;font-size:1.2em;font-weight:700;border-radius:18px;height:66px;color:#fff;background:var(--btn);
+  transition:filter .15s,transform .05s
+}
+.btn:hover{filter:brightness(1.06)} .btn:active{transform:scale(.99)}
+.btn.alt{background:#fff;color:var(--btn);border:2px solid var(--btn)}
+.btn[disabled]{opacity:.7;cursor:wait}
+
+.fade{position:fixed;left:0;right:0;bottom:0;height:calc(90px + env(safe-area-inset-bottom));pointer-events:none;
+  background:linear-gradient(to bottom,rgba(251,251,251,0),var(--bg) 85%);z-index:5}
+.down{
+  position:fixed;left:50%;bottom:calc(46px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:6;
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:#fff;color:#111;
+  display:grid;place-items:center;font-size:22px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.08);transition:opacity .2s
+}
+.down.hide{opacity:0;pointer-events:none}
+.toast{
+  position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);z-index:9;
+  background:#28465e;color:#fff;padding:12px 20px;border-radius:14px;font-weight:600;opacity:0;transition:.25s;max-width:90vw;text-align:center
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:700px){
+  body{font-size:15px}
+  .frame{border-radius:26px;padding:12px}
+  .card{padding:14px 14px 18px;border-radius:20px}
+  .logo{width:52px;height:52px}
+  input{height:54px}
+  .qr{gap:16px} .qr-img{width:104px;height:104px}
+  .btn{height:58px}
+}
+@media (max-width:480px){
+  .row,.grid{grid-template-columns:1fr}
+  .qr{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+  <symbol id="smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></symbol>
+  <symbol id="ear" viewBox="0 0 24 24"><path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="apple" viewBox="0 0 24 24"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/></symbol>
+  <symbol id="act" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M17 12h-2l-2 5-2-10-2 5H7"/></symbol>
+  <symbol id="save" viewBox="0 0 24 24"><path d="M15.2 3a2 2 0 0 1 1.4.6l3.8 3.8a2 2 0 0 1 .6 1.4V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M17 21v-7a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7"/><path d="M7 3v4a1 1 0 0 0 1 1h7"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+  <symbol id="dl" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+  <symbol id="up" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+  <symbol id="link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+</svg>
+
+<main class="frame">
+ <div class="card">
+  <header>
+    <div class="logo"><img id="logoImg" alt="Logo CAHAYA SDIDTK" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAYAAABXXxDfAAAEKUlEQVR42u2bz0/TYBjHv33HKAuVJizZ2GGaKN3BaIKJCWj04k131SP+Df4DnvwH+As8yNGTh8HBxJhgAiYYSFATVw/KSDZmmthZA2Vu9QBveTvarsx26/b6vUCypy2f9/nxPs/oK1iWhV5UNWAdtYBmG2j3dot/EhGAJAHGE0BOgtDLPYTzwFcasA7+ILZKjQH5qeALEQj+uw7LbGFoJCaAS3L3RfCF3/8NSzcxtJJFIDvpvQie8HEP8TBSwRV+2MK81zQgbh4fJXAAMFvHXL7w+79HI9TddPDnmM8TfpiLWxB18hE2z8GBWE7C5gUPYjkJLXLgSJSX0GLAkygvAcciVYOvkGenUnLU4tPrRy2ANNt8wjfbAGlbfMK3Lc4L3ljUD9hQ69CMQyg5GWlpAmlJ9LUFgOkLYlfbMCR80SwrCuAX71TXzwozMhZmM1hQMgCAck3H8poKzXAfLB7fUWzbWMNrhonlNRXlmt7VtjiXh1prBLItzMhYvKuEHgmhwi+tfrRh0pKI4tzFk3AXUa7pUKs6Nr7Wz3jZzRaAIyKiWIDQ4EtbuyhtV+w/9Mn9a57RsbK9i/WT/PazBYDld6ptW5zLo3jjYrzgNcPE05ebthefPbrZ9Rrq3cKM3NX26ctNOwKePboZmvdD2erU6mneLt5VAl1TmJEDgXfek31WLOA149D2elAgNmpKW7ue1Z4uFPW2uh8zeLXW6Pna5TUVpe0KllZ3fO3S0sTxYv0y4wWfviDaXvTzoF/ua4bpue2xn9FnxQZeycqBclIzzJOOz3R0dFQrWxXftAKA6cnw4ENpb+n+rBkmPnz7gWkP76xsVVCu6fb21pm/mnGIDbV+5vrXO3unzVGIW10o8GlJRCEnY12t49PeT3za+9k11Ms1HeXq6XZXrunQDNOzLQ66LfY97AHgtpI9d6Gj4b8wmwkE5tcMDXSqu5Kdwr2rObz5XAUATKWSeDh/GVOppMPu/dc61lVni6vkZCg52ZHbjYMmnr/9Ehl46CPtw/nLSI2PobRdQeOgiVeb3/Dk/nVHR5aWJux2lU0b9qdmmFha/eiY7MIO+VDDni1Ixbk8A7Hj8HJnI3SrY1xlW2Xaz0c10kbyTU63BXhwI2//Pj+b8QS/pWRCre59+TLDbdJLS6IjBegeT73qBr54R0GUihS+2wL4eTxq8MjC/jwpMCjwvnjeLwLorD4I8L7Cuy0AGwH9Bu9L2PulwCDB+w7fuQCDBO972LvN8VF0brGHj4MIETgFFwCS5PRflUkCkPEEn/DjCYD0+qL+sCsnQeD7hSTg+LVsnkR5CXC+oxmjIMprh73ISeFjOW34IGdSRkEsp6PgyeJog3fyOeCzkxBGtfilxs4eNiJuxWDU8l9MuBf1/6ervMTtuTpWXJ6oHLZUiOQsrZtG4RT1X4OUPV35ftimAAAAAElFTkSuQmCC"></div>
+    <div><h1 id="schoolTitle">CAHAYA SDIDTK</h1><p>Catatan Hasil Screening dan Edukasi Kesehatan Anak</p></div>
+  </header>
+
+  <form id="form" autocomplete="off" onsubmit="return false">
+  <section>
+    <h2>01. Identitas Kegiatan</h2>
+    <div class="field"><label for="sekolah">Nama Sekolah</label>
+      <input id="sekolah" name="sekolah" type="text" placeholder="Masukkan nama sekolah"></div>
+    <div class="row">
+      <div class="field"><label for="kelas">Kelas</label>
+        <input id="kelas" name="kelas" type="text" placeholder="Contoh: A"></div>
+      <div class="field"><label for="tanggal">Tanggal</label>
+        <input id="tanggal" name="tanggal" type="text" placeholder="Pilih tanggal"></div>
+    </div>
+    <div class="field" style="margin-bottom:0"><label for="jumlah">Jumlah siswa diperiksa</label>
+      <input id="jumlah" name="jumlah" type="number" inputmode="numeric" min="0" placeholder="Masukkan jumlah siswa"></div>
+  </section>
+
+  <section>
+    <h2>02. Hasil Temuan Skrining</h2>
+    <p class="hint">Isi jumlah temuan pada setiap kategori.</p>
+    <div class="grid" id="cats"></div>
+  </section>
+
+  <section>
+    <h2>03. Edukasi untuk Guru</h2>
+    <textarea id="edukasi" name="edukasi" rows="1" placeholder="Tuliskan edukasi yang disarankan..."></textarea>
+  </section>
+
+  <section>
+    <h2>04. QR Code Edukasi</h2>
+    <div class="qr">
+      <div class="qr-img"><img id="qrImg" alt="QR Code Edukasi Kesehatan Anak"></div>
+      <div>
+        <h3>Edukasi Kesehatan Anak</h3>
+        <p>Pindai QR Code untuk membaca materi kesehatan gigi, telinga, mata, gizi, dan tumbuh kembang.</p>
+        <span class="chip">QR Code sama untuk semua kelas</span>
+        <div class="qr-actions">
+          <button type="button" class="mini" id="qrUpload"><svg class="i"><use href="#up"/></svg>Ganti QR (unggah gambar)</button>
+          <button type="button" class="mini" id="qrLink"><svg class="i"><use href="#link"/></svg>Buat QR dari tautan</button>
+          <input type="file" id="qrFile" accept="image/*" hidden>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="actions">
+    <button type="button" class="btn" id="btnSave"><svg class="i"><use href="#save"/></svg>Simpan Rekap Skrining</button>
+    <button type="button" class="btn alt" id="btnPdf"><svg class="i"><use href="#dl"/></svg>Unduh PDF</button>
+  </div>
+  </form>
+ </div>
+</main>
+
+<div class="fade"></div>
+<button class="down" id="down" aria-label="Gulir ke bawah"><svg class="i"><use href="#down"/></svg></button>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+/* ================== KONFIGURASI (mudah diubah) ================== */
+const CONFIG = {
+  qrLink:  "https://example.com/edukasi-kesehatan-anak", // ganti dengan tautan materi edukasi
+  qrImage: "",   // atau isi dengan URL/path gambar QR sendiri, mis. "qr-saya.png"
+  qrColor: "#28465e",
+  storageKey: "rekap-skrining-v1"
+};
+const CATS = [
+  ["gigi","Karies gigi","smile"], ["telinga","Gangguan telinga","ear"],
+  ["mata","Gangguan mata","eye"], ["gizi","Masalah gizi","apple"],
+  ["kembang","Perkembangan","act"]
+];
+/* ================================================================ */
+
+const $ = id => document.getElementById(id);
+let qrSrc = "";
+
+// kartu kategori
+$("cats").innerHTML = CATS.map(([k,t,ic]) =>
+  `<div class="cat"><h3><svg class="i"><use href="#${ic}"/></svg>${t}</h3>
+   <input type="number" inputmode="numeric" min="0" id="c_${k}" placeholder="Jumlah: 0" aria-label="${t}"></div>`).join("");
+
+// input tanggal: tampil placeholder, berubah jadi date picker saat disentuh
+const tgl = $("tanggal");
+tgl.addEventListener("focus", () => { tgl.type = "date"; try{ tgl.showPicker && tgl.showPicker(); }catch(e){} });
+tgl.addEventListener("blur",  () => { if(!tgl.value) tgl.type = "text"; });
+
+// auto-grow textarea
+const ta = $("edukasi");
+const grow = () => { ta.style.height = "auto"; ta.style.height = ta.scrollHeight + "px"; };
+ta.addEventListener("input", grow);
+
+
+/* ---------------- QR CODE ---------------- */
+function placeholderQR(){ // dipakai jika library QR gagal dimuat (offline)
+  const n=21, cells=[]; let s=7;
+  const rnd=()=>((s=(s*9301+49297)%233280)/233280);
+  const finder=(x,y)=>x<8&&y<8||x>12&&y<8||x<8&&y>12;
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){
+    let on = finder(x,y) ? ([0,6].includes(x%14)||[0,6].includes(y%14)||(x%14>1&&x%14<5&&y%14>1&&y%14<5)) && (x%14<7&&y%14<7) : rnd()>.5;
+    if(on) cells.push(`<rect x="${x}" y="${y}" width="1" height="1"/>`);
+  }
+  return "data:image/svg+xml;utf8,"+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 ${n+2} ${n+2}" shape-rendering="crispEdges"><rect x="-1" y="-1" width="${n+2}" height="${n+2}" fill="#fff"/><g fill="${CONFIG.qrColor}">${cells.join("")}</g></svg>`);
+}
+function makeQR(text){
+  if(typeof qrcode === "undefined") return placeholderQR();
+  const q = qrcode(0,"M"); q.addData(text); q.make();
+  const svg = q.createSvgTag(8,8).replace(/fill="black"/g,`fill="${CONFIG.qrColor}"`).replace(/fill="white"/g,'fill="#ffffff"');
+  return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+}
+function setQR(src){ qrSrc = src; $("qrImg").src = src; }
+setQR(CONFIG.qrImage || makeQR(CONFIG.qrLink));
+
+// Tombol ganti QR tersembunyi. Cara memunculkan/menyembunyikan:
+//  1) tekan dan tahan gambar QR selama 1 detik, atau
+//  2) buka halaman dengan tambahan  #admin  di alamat (contoh: rekap-skrining.html#admin)
+const qrActions = document.querySelector(".qr-actions");
+const toggleQrTools = () => qrActions.classList.toggle("show");
+if(location.hash === "#admin") qrActions.classList.add("show");
+(() => {
+  const img = $("qrImg"); let t;
+  const start = () => { t = setTimeout(toggleQrTools, 1000); };
+  const stop  = () => clearTimeout(t);
+  ["touchstart","mousedown"].forEach(e => img.addEventListener(e, start, {passive:true}));
+  ["touchend","touchmove","touchcancel","mouseup","mouseleave"].forEach(e => img.addEventListener(e, stop, {passive:true}));
+  img.addEventListener("contextmenu", e => e.preventDefault());
+})();
+
+$("qrUpload").onclick = () => $("qrFile").click();
+$("qrFile").onchange = e => {
+  const f = e.target.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = () => { setQR(r.result); toast("QR Code diganti"); };
+  r.readAsDataURL(f); e.target.value = "";
+};
+$("qrLink").onclick = () => {
+  const v = prompt("Masukkan tautan / teks untuk dijadikan QR Code:", CONFIG.qrLink);
+  if(v && v.trim()){ setQR(makeQR(v.trim())); toast("QR Code dibuat dari tautan"); }
+};
+
+/* ---------------- SIMPAN / MUAT ---------------- */
+const fieldIds = ["sekolah","kelas","tanggal","jumlah","edukasi",...CATS.map(c=>"c_"+c[0])];
+function collect(){ const o={}; fieldIds.forEach(id=>o[id]=$(id).value); return o; }
+function save(){
+  try{
+    localStorage.setItem(CONFIG.storageKey, JSON.stringify({data:collect(), qr:qrSrc.startsWith("data:image/svg")?"":qrSrc}));
+    toast("Rekap skrining berhasil disimpan");
+  }catch(e){ toast("Penyimpanan di perangkat tidak tersedia"); }
+}
+function load(){
+  try{
+    const s = JSON.parse(localStorage.getItem(CONFIG.storageKey)||"null"); if(!s) return;
+    fieldIds.forEach(id=>{ if(s.data[id]!==undefined) $(id).value = s.data[id]; });
+    if(s.data.tanggal) tgl.type="date";
+    if(s.qr) setQR(s.qr);
+  }catch(e){}
+  grow();
+}
+$("btnSave").onclick = save;
+load();
+
+/* ---------------- PDF ---------------- */
+function toPNG(src){ // konversi gambar/SVG apa pun ke PNG untuk jsPDF
+  return new Promise((res,rej)=>{
+    const im = new Image();
+    im.onload = () => {
+      const c = document.createElement("canvas"); c.width = c.height = 600;
+      const g = c.getContext("2d"); g.fillStyle="#fff"; g.fillRect(0,0,600,600);
+      const r = Math.min(600/im.width, 600/im.height), w=im.width*r, h=im.height*r;
+      g.imageSmoothingEnabled=false; g.drawImage(im,(600-w)/2,(600-h)/2,w,h);
+      res(c.toDataURL("image/png"));
+    };
+    im.onerror = rej; im.src = src;
+  });
+}
+async function makePDF(){
+  if(!window.jspdf){ toast("Library PDF belum termuat. Periksa koneksi internet."); return; }
+  const btn = $("btnPdf"); btn.disabled = true;
+  try{
+    const { jsPDF } = window.jspdf, d = new jsPDF({unit:"mm", format:"a4"});
+    const v = collect(), W = 210, M = 16, CW = W - 2*M;
+    const blue=[58,131,183], ink=[0,0,0], lab=[74,107,133], mut=[106,137,164], box=[239,244,251];
+    let y = 20;
+    const page = h => { if(y+h > 280){ d.addPage(); y = 20; } };
+    const H = t => { page(14); d.setFont("helvetica","bold"); d.setFontSize(13); d.setTextColor(...ink); d.text(t,M,y); y+=7; };
+
+    // header
+    d.addImage($("logoImg").src,"PNG",M,y-6,16,16);
+    d.setFont("helvetica","bold"); d.setFontSize(20); d.setTextColor(...blue);
+    d.text("CAHAYA SDIDTK", M+21, y+2);
+    d.setFont("helvetica","normal"); d.setFontSize(10.5); d.setTextColor(...mut);
+    d.text("Catatan Hasil Screening dan Edukasi Kesehatan Anak", M+21, y+8, {maxWidth:CW-21});
+    y += 15; d.setDrawColor(220,233,243); d.setLineWidth(.4); d.line(M,y,W-M,y); y += 9;
+
+    const kv = (label, val, x, w) => {
+      d.setFont("helvetica","bold"); d.setFontSize(9.5); d.setTextColor(...lab); d.text(label, x, y);
+      d.setFillColor(...box); d.roundedRect(x,y+2,w,10,2.5,2.5,"F");
+      d.setFont("helvetica","normal"); d.setFontSize(11); d.setTextColor(...(val?ink:[151,169,187]));
+      d.text(String(val||"-"), x+4, y+8.6, {maxWidth:w-8});
+    };
+
+    H("01. Identitas Kegiatan");
+    kv("Nama Sekolah", v.sekolah, M, CW); y += 17;
+    const tg = v.tanggal ? new Date(v.tanggal+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"}) : "";
+    kv("Kelas", v.kelas, M, CW/2-3); kv("Tanggal", tg, M+CW/2+3, CW/2-3); y += 17;
+    kv("Jumlah siswa diperiksa", v.jumlah, M, CW); y += 21;
+
+    H("02. Hasil Temuan Skrining");
+    CATS.forEach(([k,t],i)=>{
+      const col = i%2, x = M + col*(CW/2+3), w = CW/2-3;
+      if(col===0) page(22);
+      d.setFillColor(...box); d.roundedRect(x,y,w,19,3.5,3.5,"F");
+      d.setFont("helvetica","bold"); d.setFontSize(10); d.setTextColor(...lab); d.text(t,x+4,y+6.5);
+      d.setFillColor(255,255,255); d.roundedRect(x+3,y+9,w-6,8,2,2,"F");
+      d.setFont("helvetica","normal"); d.setFontSize(11); d.setTextColor(...ink);
+      d.text("Jumlah: "+(v["c_"+k]||0), x+6, y+14.6);
+      if(col===1 || i===CATS.length-1) y += 23;
+    });
+    y += 3;
+
+    H("03. Edukasi untuk Guru");
+    d.setFont("helvetica","normal"); d.setFontSize(11); d.setTextColor(...ink);
+    const lines = d.splitTextToSize(v.edukasi.trim()||"-", CW-8);
+    d.setFillColor(...box);
+    let i0 = 0;
+    while(i0 < lines.length){
+      page(14);
+      const n = Math.min(lines.length-i0, Math.floor((282-y-8)/5.2) || 1);
+      d.roundedRect(M,y,CW,n*5.2+6,3,3,"F");
+      d.setTextColor(...ink);
+      d.text(lines.slice(i0,i0+n), M+4, y+6.5, {lineHeightFactor:1.25});
+      y += n*5.2+10; i0 += n;
+      if(i0 < lines.length){ d.addPage(); y = 20; }
+    }
+    y += 4;
+
+    H("04. QR Code Edukasi");
+    page(48);
+    const png = await toPNG(qrSrc);
+    d.addImage(png,"PNG",M,y,34,34);
+    d.setFont("helvetica","bold"); d.setFontSize(13); d.setTextColor(...ink); d.text("Edukasi Kesehatan Anak",M+40,y+8);
+    d.setFont("helvetica","normal"); d.setFontSize(10); d.setTextColor(...mut);
+    d.text(d.splitTextToSize("Pindai QR Code untuk membaca materi kesehatan gigi, telinga, mata, gizi, dan tumbuh kembang.",CW-42),M+40,y+14);
+    d.setFillColor(221,239,254); d.roundedRect(M+40,y+25,58,7,3.5,3.5,"F");
+    d.setFont("helvetica","bold"); d.setFontSize(8.5); d.setTextColor(30,142,240); d.text("QR Code sama untuk semua kelas",M+44,y+29.8);
+
+    const safe = s => (s||"").trim().replace(/[^\w\-]+/g,"_").replace(/^_+|_+$/g,"");
+    d.save(["Rekap-Skrining",safe(v.sekolah),safe(v.kelas)].filter(Boolean).join("-")+".pdf");
+    toast("PDF berhasil dibuat");
+  }catch(e){ console.error(e); toast("Gagal membuat PDF"); }
+  btn.disabled = false;
+}
+$("btnPdf").onclick = makePDF;
+
+/* ---------------- UI ---------------- */
+const down = $("down");
+down.onclick = () => window.scrollTo({top:document.documentElement.scrollHeight, behavior:"smooth"});
+const updDown = () => down.classList.toggle("hide", innerHeight+scrollY >= document.documentElement.scrollHeight-80);
+addEventListener("scroll", updDown, {passive:true}); addEventListener("resize", updDown); updDown();
+
+let tt; function toast(m){ const t=$("toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),2400); }
+</script>
+</body>
+</html>
